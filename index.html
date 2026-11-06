@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Eduardo Oliveira Barreto | Ciência da Computação • Cibersegurança & Redes</title>
+  <meta name="description" content="Portfólio profissional de Carlos Eduardo Oliveira Barreto. Estudante de Ciência da Computação na UFMT especializado em Cibersegurança e Redes de Computadores.">
+  
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carlos Eduardo Oliveira Barreto | Portfólio Profissional">
+  <meta property="og:description" content="Estudante de Ciência da Computação na UFMT, estagiário em Suporte de TI com foco em Cibersegurança e Redes.">
+  <meta property="og:url" content="https://www.linkedin.com/in/carlosedbarreto">
+
+  <!-- CONFIGURAÇÃO DA FOTO DO PERFIL -->
+  <script>
+    /* Envie sua foto para o repositório do GitHub, na mesma pasta do index.html, e coloque aqui o nome exato do arquivo (exemplo: foto.jpg ou foto.png). Também funciona com um link de imagem. */
+    const foto = "foto.jpg";
+  </script>
+
+  <!-- Google Fonts: Instrument Serif (Italic), Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      /* Troque as cores do site aqui (Tema Escuro Futurista - Padrão) */
+      --cor-fundo: #030712;
+      --cor-fundo-card: rgba(15, 23, 42, 0.65);
+      --cor-superficie: rgba(30, 41, 59, 0.7);
+      --cor-borda: rgba(255, 255, 255, 0.12);
+      --cor-borda-hover: #00E5FF;
+      --cor-texto: #ffffff;
+      --cor-texto-suave: #cbd5e1;
+      --cor-destaque: #00E5FF; /* Azul Elétrico / Ciano Neon */
+      --cor-destaque-cyan: #38BDF8;
+      --cor-destaque-hover: #0284c7;
+      --cor-secundaria: #818cf8;
+      --cor-glow-1: rgba(0, 229, 255, 0.18);
+      --cor-glow-2: rgba(56, 189, 248, 0.15);
+      --cor-glow-3: rgba(129, 140, 248, 0.12);
+    }
+
+    body {
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .font-syne {
+      font-family: 'Syne', sans-serif;
+    }
+
+    .font-serif-italic {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+    }
+
+    /* Mesh Gradient de Fundo Fluído & Luminoso */
+    .mesh-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      background: var(--cor-fundo);
+    }
+
+    .mesh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.85;
+      will-change: transform;
+    }
+
+    .mesh-1 {
+      top: -10%;
+      right: -5%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, var(--cor-glow-1) 0%, transparent 70%);
+    }
+
+    .mesh-2 {
+      bottom: 10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, var(--cor-glow-2) 0%, transparent 70%);
+    }
+
+    .mesh-3 {
+      top: 40%;
+      right: 25%;
+      width: 35vw;
+      height: 35vw;
+      background: radial-gradient(circle, var(--cor-glow-3) 0%, transparent 70%);
+    }
+
+    /* Cards e Superfícies Glassmorphism Translúcidas */
+    .glass-card {
+      background: var(--cor-fundo-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--cor-borda);
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--cor-borda-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(0, 229, 255, 0.15);
+    }
+
+    /* Animações Leves */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elemento 3D Cristal Flutuante */
+    @keyframes floatLight {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    .floating-crystal {
+      animation: floatLight 7s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .glass-card:hover {
+        transform: none !important;
+      }
+      .floating-crystal {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-black flex flex-col min-h-screen">
+
+  <!-- MESH GRADIENT CONTAINER -->
+  <div class="mesh-background">
+    <div class="mesh-blob mesh-1"></div>
+    <div class="mesh-blob mesh-2"></div>
+    <div class="mesh-blob mesh-3"></div>
+  </div>
+
+  <!-- MENU FIXO EDITORIAL -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[var(--cor-fundo)]/70 border-b border-[var(--cor-borda)] transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Editorial -->
+        <a href="#" class="group flex items-center text-lg font-bold font-syne tracking-tight text-white hover:text-[var(--cor-destaque)] transition-colors">
+          <span class="tracking-wider text-sm font-semibold uppercase text-white">Carlos Eduardo Barreto</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-widest uppercase">
+          <a href="#sobre" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Sobre</a>
+          <a href="#habilidades" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Habilidades</a>
+          <a href="#projetos" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Projetos</a>
+          <a href="#experiencia" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Experiência</a>
+          <a href="#formacao" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Formação</a>
+          <a href="#contato" class="text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-colors">Contato</a>
+        </nav>
+
+        <!-- Menu Mobile -->
+        <div class="flex items-center">
+          <button id="mobile-menu-btn" aria-label="Abrir menu principal" class="md:hidden p-2.5 rounded-xl glass-card text-[var(--cor-texto)] hover:text-[var(--cor-destaque)] transition-all">
+            <i class="fa-solid fa-bars text-base"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-[var(--cor-borda)] bg-[var(--cor-fundo)]/95 backdrop-blur-2xl px-6 pt-4 pb-8 space-y-4">
+      <a href="#sobre" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Sobre</a>
+      <a href="#habilidades" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Habilidades</a>
+      <a href="#projetos" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Projetos</a>
+      <a href="#experiencia" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Experiência</a>
+      <a href="#formacao" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Formação</a>
+      <a href="#contato" class="mobile-link block text-sm font-semibold uppercase tracking-wider text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)]">Contato</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- SEÇÃO HERO EDITORIAL COM CRISTAL 3D -->
+    <section class="relative min-h-[calc(100vh-5rem)] flex items-center py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Headline Editorial Principal -->
+        <div class="lg:col-span-7 space-y-8 reveal">
+          
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full glass-card border-[var(--cor-borda)] text-xs font-mono font-medium text-[var(--cor-destaque)] tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-[var(--cor-destaque)] animate-pulse"></span>
+            <span>CIBERSEGURANÇA & REDES</span>
+          </div>
+
+          <!-- Título Tipográfico Harmonizado em Cor Única (Branco) -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-syne tracking-tight leading-tight text-white">
+            Carlos Eduardo Oliveira Barreto
+          </h1>
+
+          <p class="text-lg sm:text-xl font-normal text-[var(--cor-texto-suave)] font-syne">
+            Estudante de <span class="font-semibold text-[var(--cor-texto)]">Ciência da Computação</span> na UFMT
+          </p>
+
+          <p class="text-base text-[var(--cor-texto-suave)] leading-relaxed max-w-xl font-normal">
+            Atualmente no 4º semestre e estagiário em Suporte de TI no DNIT. Busco oportunidades de emprego na área de tecnologia, aplicando conhecimentos em infraestrutura, administração de sistemas Linux e segurança de redes.
+          </p>
+
+          <!-- Botões Editorial & Redes -->
+          <div class="pt-2 flex flex-wrap gap-4 items-center">
+            <a href="#projetos" class="inline-flex items-center justify-center px-7 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black shadow-lg shadow-cyan-500/20 transition-all">
+              Ver projetos
+              <i class="fa-solid fa-arrow-down-long ml-2.5 text-xs"></i>
+            </a>
+
+            <a href="#contato" class="inline-flex items-center justify-center px-7 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest glass-card text-[var(--cor-texto)] hover:text-[var(--cor-destaque)] transition-all">
+              Contato
+            </a>
+
+            <div class="flex items-center space-x-3 ml-0 sm:ml-2">
+              <a href="https://www.linkedin.com/in/carlosedbarreto" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3.5 rounded-2xl glass-card text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-all">
+                <i class="fa-brands fa-linkedin-in text-base"></i>
+              </a>
+
+              <a href="https://github.com/carlosbrtt" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3.5 rounded-2xl glass-card text-[var(--cor-texto-suave)] hover:text-[var(--cor-destaque)] transition-all">
+                <i class="fa-brands fa-github text-base"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Metadados de Localização -->
+          <div class="pt-6 flex flex-wrap gap-6 text-xs text-[var(--cor-texto-suave)] border-t border-[var(--cor-borda)] font-mono">
+            <span class="flex items-center"><i class="fa-solid fa-location-dot text-[var(--cor-destaque)] mr-2"></i> Cuiabá, MT</span>
+            <span class="flex items-center"><i class="fa-solid fa-graduation-cap text-[var(--cor-destaque)] mr-2"></i> Formatura: Dez/2028</span>
+          </div>
+
+        </div>
+
+        <!-- Cristal Geometrico 3D translúcido inspirada na referência SNIG + Avatar -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center relative reveal">
+          
+          <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+            
+            <!-- SVG do Cristal Vidro 3D Geometrico Flutuante -->
+            <div class="absolute inset-0 flex items-center justify-center floating-crystal pointer-events-none opacity-90">
+              <svg width="320" height="320" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full filter drop-shadow-[0_0_25px_rgba(0,225,255,0.3)]">
+                <!-- Facetas Geométricas Translúcidas -->
+                <polygon points="100,15 155,50 155,120 100,185 45,120 45,50" fill="url(#glassGrad1)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+                <polygon points="100,15 155,50 100,100" fill="url(#glassGrad2)" opacity="0.7" />
+                <polygon points="45,50 100,15 100,100" fill="url(#glassGrad3)" opacity="0.6" />
+                <polygon points="45,50 45,120 100,100" fill="url(#glassGrad1)" opacity="0.5" />
+                <polygon points="155,50 155,120 100,100" fill="url(#glassGrad2)" opacity="0.6" />
+                <polygon points="45,120 100,185 100,100" fill="url(#glassGrad3)" opacity="0.8" />
+                <polygon points="155,120 100,185 100,100" fill="url(#glassGrad1)" opacity="0.7" />
+
+                <!-- Definições de Gradientes de Vidro / Cristal -->
+                <defs>
+                  <linearGradient id="glassGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="#818cf8" stop-opacity="0.1" />
+                  </linearGradient>
+                  <linearGradient id="glassGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#030712" stop-opacity="0.3" />
+                  </linearGradient>
+                  <linearGradient id="glassGrad3" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.05" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- Card de Perfil Incorporado ao Cristal -->
+            <div id="avatar-container" class="relative z-10 w-52 h-52 rounded-2xl glass-card overflow-hidden flex items-center justify-center p-1.5 border-2 border-[var(--cor-borda)] shadow-2xl">
+              <img id="profile-img" src="" alt="Carlos Eduardo Oliveira Barreto" class="w-full h-full object-cover rounded-xl hidden" />
+              <div id="avatar-fallback" class="w-full h-full rounded-xl bg-slate-900/90 flex flex-col items-center justify-center text-center p-4">
+                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 text-[var(--cor-destaque)] flex items-center justify-center text-xl font-bold font-syne mb-2">
+                  CB
+                </div>
+                <span class="text-xs font-bold font-syne uppercase tracking-wider text-[var(--cor-texto)]">Carlos Barreto</span>
+                <span class="text-[11px] font-mono text-[var(--cor-texto-suave)] mt-1">UFMT • 4º Semestre</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: SOBRE MIM -->
+    <section id="sobre" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-4xl mx-auto space-y-10 reveal">
+        
+        <div class="flex items-center space-x-4">
+          <h2 class="text-3xl sm:text-4xl font-bold font-syne tracking-tight">Sobre <span class="text-[var(--cor-destaque)]">mim</span></h2>
+          <div class="flex-grow h-[1px] bg-[var(--cor-borda)]"></div>
+        </div>
+
+        <div class="glass-card p-8 sm:p-10 rounded-3xl space-y-6">
+          <p class="text-lg sm:text-xl text-[var(--cor-texto)] leading-relaxed font-light">
+            Sou estudante do 4º semestre de Ciência da Computação na Universidade Federal de Mato Grosso (UFMT), com foco direcionado para as áreas de <strong class="text-[var(--cor-destaque)] font-semibold">Cibersegurança e Redes de Computadores</strong>.
+          </p>
+          <p class="text-base text-[var(--cor-texto-suave)] leading-relaxed">
+            Meu aprendizado é guiado pela prática, desde a configuração de servidores caseiros até o suporte diário à infraestrutura de redes e hardware no estágio. Tenho um perfil analítico e dedicado, com foco em investigar problemas técnicos até encontrar soluções definitivas.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: HABILIDADES -->
+    <section id="habilidades" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-6xl mx-auto space-y-12 reveal">
+        
+        <div class="flex items-center space-x-4">
+          <h2 class="text-3xl sm:text-4xl font-bold font-syne tracking-tight">Habilidades & <span class="text-[var(--cor-destaque)]">Competências</span></h2>
+          <div class="flex-grow h-[1px] bg-[var(--cor-borda)]"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Categoria 1: Linguagens -->
+          <div class="glass-card p-7 rounded-3xl space-y-6">
+            <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+              <i class="fa-solid fa-code text-xl"></i>
+              <h3 class="text-lg font-bold font-syne text-[var(--cor-texto)]">Linguagens</h3>
+            </div>
+            <ul class="space-y-4 text-sm">
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">Python</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico a Intermediário</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">Java</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico a Intermediário</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">C</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico a Intermediário</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="font-semibold">SQL</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico a Intermediário</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Categoria 2: Ferramentas & Sistemas -->
+          <div class="glass-card p-7 rounded-3xl space-y-6">
+            <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+              <i class="fa-solid fa-server text-xl"></i>
+              <h3 class="text-lg font-bold font-syne text-[var(--cor-texto)]">Sistemas & Redes</h3>
+            </div>
+            <ul class="space-y-4 text-sm">
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">Linux (Debian)</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico a Intermediário</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">Banco de Dados / SQL</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Básico</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-[var(--cor-borda)]">
+                <span class="font-semibold">Pi-hole & Redes/DNS</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Prático</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="font-semibold">Git, Supabase & Figma</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">Prático</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Categoria 3: Comportamentais -->
+          <div class="glass-card p-7 rounded-3xl space-y-6">
+            <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+              <i class="fa-solid fa-brain text-xl"></i>
+              <h3 class="text-lg font-bold font-syne text-[var(--cor-texto)]">Comportamentais</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="p-3 rounded-2xl bg-[var(--cor-superficie)] border border-[var(--cor-borda)]">
+                <p class="font-bold text-xs uppercase text-[var(--cor-destaque)] tracking-wider">Troubleshooting</p>
+                <p class="text-xs text-[var(--cor-texto-suave)] mt-1">Diagnóstico prático e solução de falhas físicas e lógicas em chamados de TI.</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-[var(--cor-superficie)] border border-[var(--cor-borda)]">
+                <p class="font-bold text-xs uppercase text-[var(--cor-destaque)] tracking-wider">Proatividade & Paciência</p>
+                <p class="text-xs text-[var(--cor-texto-suave)] mt-1">Atendimento didático e empático a usuários leigos, orientando sobre prevenção.</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-[var(--cor-superficie)] border border-[var(--cor-borda)]">
+                <p class="font-bold text-xs uppercase text-[var(--cor-destaque)] tracking-wider">Adaptabilidade & Foco</p>
+                <p class="text-xs text-[var(--cor-texto-suave)] mt-1">Trabalho contínuo e concentrado até a finalização do objetivo.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: PROJETOS -->
+    <section id="projetos" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-6xl mx-auto space-y-12 reveal">
+        
+        <div class="flex items-center space-x-4">
+          <h2 class="text-3xl sm:text-4xl font-bold font-syne tracking-tight">Projetos em <span class="text-[var(--cor-destaque)]">destaque</span></h2>
+          <div class="flex-grow h-[1px] bg-[var(--cor-borda)]"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Projeto 1: InterUFMT -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-cyan-500/10 text-[var(--cor-destaque)] border border-cyan-500/20">
+                  Extensão (1º Semestre)
+                </span>
+                <i class="fa-solid fa-mobile-screen-button text-2xl text-[var(--cor-texto-suave)]"></i>
+              </div>
+
+              <h3 class="text-2xl font-bold font-syne">App InterUFMT</h3>
+
+              <p class="text-sm text-[var(--cor-texto-suave)] leading-relaxed">
+                Desenvolvimento de aplicativo para centralizar e acompanhar informações do torneio universitário InterUFMT, como placares, times vitoriosos e horários de jogos. Participei da construção e estruturação das consultas em SQL para o banco de dados.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-[var(--cor-borda)] flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">SQL</span>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Supabase</span>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Flutter</span>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Figma</span>
+            </div>
+          </div>
+
+          <!-- Projeto 2: Pi-hole DNS -->
+          <div class="glass-card p-8 rounded-3xl flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-purple-500/10 text-[var(--cor-secundaria)] border border-purple-500/20">
+                  Laboratório Prático de Redes
+                </span>
+                <i class="fa-solid fa-network-wired text-2xl text-[var(--cor-texto-suave)]"></i>
+              </div>
+
+              <h3 class="text-2xl font-bold font-syne">Bloqueador de Anúncios (Homelab DNS)</h3>
+
+              <p class="text-sm text-[var(--cor-texto-suave)] leading-relaxed">
+                Configuração de um servidor doméstico em um computador antigo com Debian Server rodando o Pi-hole continuamente (24h) para filtragem e bloqueio de anúncios e rastreadores em nível de DNS para a rede local.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-[var(--cor-borda)] flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Linux (Debian)</span>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Pi-hole</span>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono bg-[var(--cor-superficie)] text-[var(--cor-texto)]">Redes / DNS</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: EXPERIÊNCIA E ATIVIDADES -->
+    <section id="experiencia" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-4xl mx-auto space-y-12 reveal">
+        
+        <div class="flex items-center space-x-4">
+          <h2 class="text-3xl sm:text-4xl font-bold font-syne tracking-tight">Trajetória & <span class="text-[var(--cor-destaque)]">Experiência</span></h2>
+          <div class="flex-grow h-[1px] bg-[var(--cor-borda)]"></div>
+        </div>
+
+        <div class="relative border-l-2 border-[var(--cor-borda)] ml-4 sm:ml-6 space-y-10">
+          
+          <!-- Estágio DNIT -->
+          <div class="relative pl-6 sm:pl-10">
+            <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[var(--cor-destaque)] shadow-[0_0_12px_#00E5FF]"></div>
+            
+            <div class="glass-card p-7 rounded-3xl space-y-3">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <div>
+                  <h3 class="text-xl font-bold font-syne">Estagiário de Suporte de TI</h3>
+                  <p class="text-sm font-semibold text-[var(--cor-destaque)]">Superintendência Regional do DNIT</p>
+                </div>
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-[var(--cor-superficie)] text-[var(--cor-texto-suave)] border border-[var(--cor-borda)]">
+                  Out/2025 – Presente
+                </span>
+              </div>
+              <p class="text-sm text-[var(--cor-texto-suave)] leading-relaxed">
+                Atendimento presencial de suporte técnico, manutenção preventiva e corretiva de hardware, formatação de computadores e configuração de rede de computadores (inclusão de máquinas no domínio da rede e atualização de políticas de grupo/GPO).
+              </p>
+            </div>
+          </div>
+
+          <!-- Monitoria -->
+          <div class="relative pl-6 sm:pl-10">
+            <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[var(--cor-secundaria)]"></div>
+            
+            <div class="glass-card p-7 rounded-3xl space-y-3">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <div>
+                  <h3 class="text-xl font-bold font-syne">Monitor Acadêmico (Vetores e Geometria Analítica)</h3>
+                  <p class="text-sm font-semibold text-[var(--cor-secundaria)]">Universidade Federal de Mato Grosso (UFMT)</p>
+                </div>
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-[var(--cor-superficie)] text-[var(--cor-texto-suave)] border border-[var(--cor-borda)]">
+                  3º Semestre
+                </span>
+              </div>
+              <p class="text-sm text-[var(--cor-texto-suave)] leading-relaxed">
+                Auxílio no atendimento a dúvidas dos estudantes da disciplina e suporte na resolução de listas de exercícios.
+              </p>
+            </div>
+          </div>
+
+          <!-- Voluntariado / Extensão -->
+          <div class="relative pl-6 sm:pl-10">
+            <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-slate-500"></div>
+            
+            <div class="glass-card p-7 rounded-3xl space-y-3">
+              <div class="flex flex-wrap justify-between items-start gap-2">
+                <div>
+                  <h3 class="text-xl font-bold font-syne">Desenvolvedor SQL (Voluntário)</h3>
+                  <p class="text-sm font-semibold text-[var(--cor-texto-suave)]">Projeto de Extensão InterUFMT</p>
+                </div>
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-[var(--cor-superficie)] text-[var(--cor-texto-suave)] border border-[var(--cor-borda)]">
+                  1º Semestre
+                </span>
+              </div>
+              <p class="text-sm text-[var(--cor-texto-suave)] leading-relaxed">
+                Atuação no desenvolvimento e estruturação de consultas em SQL para suporte ao banco de dados do aplicativo do torneio acadêmico.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: FORMAÇÃO & IDIOMAS -->
+    <section id="formacao" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-6xl mx-auto space-y-12 reveal">
+        
+        <div class="flex items-center space-x-4">
+          <h2 class="text-3xl sm:text-4xl font-bold font-syne tracking-tight">Formação & <span class="text-[var(--cor-destaque)]">Idiomas</span></h2>
+          <div class="flex-grow h-[1px] bg-[var(--cor-borda)]"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Formação Acadêmica -->
+          <div class="glass-card p-8 rounded-3xl space-y-6">
+            <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+              <i class="fa-solid fa-graduation-cap text-2xl"></i>
+              <h3 class="text-xl font-bold font-syne text-[var(--cor-texto)]">Formação Acadêmica</h3>
+            </div>
+            
+            <div class="space-y-2">
+              <h4 class="text-lg font-bold font-syne">Bacharelado em Ciência da Computação</h4>
+              <p class="text-sm text-[var(--cor-destaque)] font-semibold">Universidade Federal de Mato Grosso (UFMT)</p>
+              <p class="text-xs text-[var(--cor-texto-suave)]">Cuiabá, Mato Grosso</p>
+            </div>
+
+            <div class="pt-4 border-t border-[var(--cor-borda)] flex flex-wrap justify-between text-xs font-mono text-[var(--cor-texto-suave)]">
+              <span>Semestre: <strong>4º Semestre</strong></span>
+              <span>Previsão: <strong>Dezembro/2028</strong></span>
+            </div>
+          </div>
+
+          <!-- Idiomas & Eventos -->
+          <div class="glass-card p-8 rounded-3xl space-y-6">
+            
+            <!-- Idiomas -->
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+                <i class="fa-solid fa-globe text-xl"></i>
+                <h3 class="text-xl font-bold font-syne text-[var(--cor-texto)]">Idiomas</h3>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-3.5 rounded-2xl bg-[var(--cor-superficie)] border border-[var(--cor-borda)]">
+                  <p class="text-xs text-[var(--cor-texto-suave)] font-mono">Inglês</p>
+                  <p class="text-sm font-bold font-syne text-[var(--cor-texto)] mt-0.5">C2 (Avançado / Fluente)</p>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-[var(--cor-superficie)] border border-[var(--cor-borda)]">
+                  <p class="text-xs text-[var(--cor-texto-suave)] font-mono">Espanhol</p>
+                  <p class="text-sm font-bold font-syne text-[var(--cor-texto)] mt-0.5">Intermediário</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Eventos -->
+            <div class="space-y-3 pt-4 border-t border-[var(--cor-borda)]">
+              <div class="flex items-center space-x-3 text-[var(--cor-destaque)]">
+                <i class="fa-solid fa-calendar-day text-xl"></i>
+                <h3 class="text-lg font-bold font-syne text-[var(--cor-texto)]">Eventos Acadêmicos</h3>
+              </div>
+              <p class="text-sm text-[var(--cor-texto-suave)]">
+                Participante da <strong>SEMATEC</strong> (Semana Acadêmica da Computação da UFMT) nas edições de <strong>2025</strong> e <strong>2026</strong>.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SEÇÃO: CONTATO -->
+    <section id="contato" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-[var(--cor-borda)]">
+      <div class="max-w-4xl mx-auto text-center space-y-10 reveal">
+        
+        <div class="space-y-4">
+          <h2 class="text-3xl sm:text-5xl font-bold font-syne tracking-tight">Vamos <span class="text-[var(--cor-destaque)]">conversar?</span></h2>
+          <p class="text-base text-[var(--cor-texto-suave)] max-w-lg mx-auto">
+            Estou disponível para oportunidades profissionais de emprego e conexões na área de Tecnologia, Cibersegurança e Redes.
+          </p>
+        </div>
+
+        <div class="glass-card p-10 rounded-3xl max-w-xl mx-auto space-y-8">
+          
+          <!-- E-mail Principal -->
+          <a href="mailto:carloseobarreto@gmail.com" class="inline-flex items-center space-x-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-bold font-syne transition-all shadow-lg shadow-cyan-500/20 w-full sm:w-auto justify-center">
+            <i class="fa-solid fa-envelope text-lg"></i>
+            <span class="tracking-wide">carloseobarreto@gmail.com</span>
+          </a>
+
+          <!-- Conexões -->
+          <div class="pt-6 border-t border-[var(--cor-borda)] flex flex-wrap justify-center gap-4 text-sm font-semibold">
+            <a href="https://www.linkedin.com/in/carlosedbarreto" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 px-5 py-3 rounded-2xl glass-card text-[var(--cor-texto)] hover:text-[var(--cor-destaque)] transition-all">
+              <i class="fa-brands fa-linkedin text-cyan-400"></i>
+              <span>LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/carlosbrtt" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 px-5 py-3 rounded-2xl glass-card text-[var(--cor-texto)] hover:text-[var(--cor-destaque)] transition-all">
+              <i class="fa-brands fa-github text-slate-300"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <p class="text-xs font-mono text-[var(--cor-texto-suave)] pt-2">
+            <i class="fa-solid fa-location-dot mr-1.5 text-[var(--cor-destaque)]"></i> Cuiabá, Mato Grosso — Brasil
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="py-8 px-4 border-t border-[var(--cor-borda)] bg-[var(--cor-fundo)] text-center text-xs text-[var(--cor-texto-suave)]">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+      <p>© <span id="year">2026</span> Carlos Eduardo Oliveira Barreto. Todos os direitos reservados.</p>
+      <p class="text-xs">Ciência da Computação • UFMT</p>
+    </div>
+  </footer>
+
+
+  <!-- SCRIPTS LEVES JS -->
+  <script>
+    // 1. Atualizar Ano no Rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2. Foto de Perfil & Fallback
+    const profileImg = document.getElementById('profile-img');
+    const avatarFallback = document.getElementById('avatar-fallback');
+
+    if (typeof foto === 'string' && foto.trim() !== '') {
+      profileImg.src = foto;
+      profileImg.onload = function() {
+        profileImg.classList.remove('hidden');
+        avatarFallback.classList.add('hidden');
+      };
+      profileImg.onerror = function() {
+        profileImg.classList.add('hidden');
+        avatarFallback.classList.remove('hidden');
+      };
+    } else {
+      profileImg.classList.add('hidden');
+      avatarFallback.classList.remove('hidden');
+    }
+
+    // 4. Menu Mobile
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // 5. Revelação com Intersection Observer Leve
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.active ? null : entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.08
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('active'));
+    }
+  </script>
+</body>
+</html>
