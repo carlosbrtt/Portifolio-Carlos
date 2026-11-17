@@ -1,8 +1,6 @@
 # Olá, eu sou o Carlos Eduardo 👋
 
-Graduando em **Ciência da Computação na UFMT** (previsão de conclusão: Dez/2028) e **Estagiário de Suporte de TI no DNIT**, com foco em **Inteligência Artificial Generativa, Desenvolvimento Full-Stack, Redes e Cibersegurança**.
-
-Acredito no aprendizado contínuo e orientado à prática: utilizo ferramentas de IA como aceleradoras de estudo, prototipação e análise crítica de arquitetura — sempre combinando fundamentos sólidos de computação (matemática, bancos de dados, Linux e redes) com a entrega de soluções funcionais.
+Graduando em **Ciência da Computação na UFMT** (previsão de conclusão: Dez/2028) com foco em **Inteligência Artificial Generativa, Desenvolvimento Full-Stack, Redes e Cibersegurança**.
 
 ---
 
